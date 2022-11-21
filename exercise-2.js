@@ -10,12 +10,12 @@ class Person {
     return JSON.stringify(this);
   }
   static fromJson(json) {
-    const newJson = JSON.parse(json);
-    const objCreator = Object.values(newJson);
-    return new Person(...objCreator);
+    const thisParse = JSON.parse(json);
+    const {id, firstName, lastName, age} = thisParse;
+    return new Person(id, firstName, lastName, age);
   }
 }
 
-const json = '{"id":1,"firstName":"Mario","lastName":"Rossi","age":25}';
+const json = '{"firstName":"Mario","id":1,"age":25,"lastName":"Rossi"}';
 const developer = Person.fromJson(json);
 console.log(developer);
